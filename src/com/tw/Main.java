@@ -20,6 +20,9 @@ public class Main {
         Map<String, Integer> integerMap = frequency.buildFreqMap(readFileToString(new File("data/source.txt")));
         System.out.println("Total no. of keys present: " + integerMap.size());
         long completedAt = System.currentTimeMillis();
+        /*for (String key : integerMap.keySet()) {
+            System.out.println("Key: " + key + " Value: "+ integerMap.get(key));
+        }*/
         System.out.println("Total execution time : " + (completedAt - startedAt) + "ms");
     }
 }
