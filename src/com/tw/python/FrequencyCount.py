@@ -4,6 +4,7 @@ from nltk import probability
 from nltk import corpus
 from nltk import stem
 from nltk import tokenize
+from nltk.corpus import wordnet as wn
 
 class FrequencyCount(FrequencyCount):
     def buildFreqMap(self, text):
@@ -28,6 +29,22 @@ class FrequencyCount(FrequencyCount):
         for w in word_list:
             after_stem.append(stemmer.stem(w))
         return after_stem
+
+    def groupBySynSet(self, init_text):
+        init_list = init_text.split()
+        final_dict = {}
+        for init_word in init_list:
+            for syn in wn.synsets(init_word):
+                for name in syn.lemma_names:
+                    if not final_dict.has_key(init_word):
+                        final_dict[init_word] = [init_word]
+                    if name != init_word and name in init_list:
+                        init_list.remove(name)
+                        final_dict[init_word] += [name]
+        return final_dict
+
+
+
 
 
   

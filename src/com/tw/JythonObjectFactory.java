@@ -11,7 +11,6 @@ public class JythonObjectFactory {
     private static PyObject pyObject = null;
 
     protected JythonObjectFactory() {
-
     }
 
     public static JythonObjectFactory getInstance() {
